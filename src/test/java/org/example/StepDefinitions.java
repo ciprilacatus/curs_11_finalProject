@@ -1,12 +1,18 @@
 package org.example;
 
 import PageObjects.*;
+import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepDefinitions {
     private WebDriver driver;
@@ -17,7 +23,7 @@ public class StepDefinitions {
     PersonalInformationPage personalInformationPage;
     ContactInformationPage contactInformationPage;
     CourseOptionPage courseOptionPage;
-
+    PaymentInformationPage paymentInformationPage;
 
 
     public StepDefinitions() {
@@ -30,12 +36,27 @@ public class StepDefinitions {
         personalInformationPage = new PersonalInformationPage(driver);
         contactInformationPage = new ContactInformationPage(driver);
         courseOptionPage = new CourseOptionPage(driver);
+        paymentInformationPage = new PaymentInformationPage(driver);
+
     }
 
+
     ///////////////////////////////@Given////////////////////////////////
+
+
+    @Given("I am on Payment Information page")
+    public void i_am_on_payment_information_page() {
+        driver.get("file:///C:/Users/cipri/Documents/azimutVison/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
+        personalInformationPage.fillInPersonalInformationWithValidData();
+        contactInformationPage.fillInContactInformationWithValidData();
+        courseOptionPage.fillCourseOptionValidData();
+
+    }
+
     @Given("I am on Course Option page")
     public void i_am_on_course_option_page() {
         driver.get("file:///C:/Users/cipri/Documents/azimutVison/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
+        personalInformationPage.fillInPersonalInformationWithValidData();
         contactInformationPage.fillInContactInformationWithValidData();
     }
 
@@ -43,8 +64,9 @@ public class StepDefinitions {
     public void i_am_on_personal_information_page() {
         driver.get("file:///C:/Users/cipri/Documents/azimutVison/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
     }
+
     @Given("I am Contact Information page")
-    public void  i_am_on_contact_information_page(){
+    public void i_am_on_contact_information_page() {
         driver.get("file:///C:/Users/cipri/Documents/azimutVison/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
         personalInformationPage.fillInPersonalInformationWithValidData();
     }
@@ -76,6 +98,16 @@ public class StepDefinitions {
     }
 
     ///////////////////////////////////////////////////////@When/////////////////////
+
+    @When("the card holder name value of {string} is inputted")
+    public void input_card_holder_name(String string) {
+        paymentInformationPage.input_CardHolderName(string);
+    }
+
+    @When("i click on preferred course")
+    public void click_on_preferred_course() {
+        courseOptionPage.clickOn_PreferredCours();
+    }
 
     @When("the contact information email value of {string} is inputted")
     public void input_email(String string) {
@@ -163,22 +195,70 @@ public class StepDefinitions {
     public void click_next_button_personal_information() {
         personalInformationPage.clickNextButtonFromPersonalInformationStep();
     }
+
     @And("the country value of {string} is inputted")
     public void input_country(String string) {
         contactInformationPage.contactInformation_CountryField(string);
     }
+
     @And("the city value of {string} is inputted")
     public void input_city(String string) {
         contactInformationPage.contactInformation_CityField(string);
     }
+
     @And("the post code value of {string} is inputted")
     public void input_post_code(String string) {
         contactInformationPage.contactInformation_PostCodeField(string);
     }
+
     @And("i click on next button from contact information page")
-    public void click_on_next_button_contact_information_page(){
+    public void click_on_next_button_contact_information_page() {
         contactInformationPage.contactInformation_ClickNextButton();
     }
+
+    @And("i click on next button from course option page")
+    public void click_on_next_button_course_option_page() {
+        courseOptionPage.clickOn_NextButtonFromCourseOption();
+    }
+
+    @And("i click on preview button from course option page")
+    public void click_on_preview_button_course_option() {
+        courseOptionPage.clickOn_PreviewButtonFromCourseOption();
+    }
+
+    @And("the card number value of {string} is inputted")
+    public void input_card_number(String string) {
+        paymentInformationPage.input_CardNumber(string);
+    }
+
+    @And("the CVC value of {string} is inputted")
+    public void input_cvc(String string) {
+        paymentInformationPage.input_CVC(string);
+    }
+
+
+    @And("the expire month value {string} card is selected")
+    public void select_expire_month_card(String month){
+        paymentInformationPage.selectMonthByXpath(driver, month);
+    }
+
+    @And("the expire year value {string} card is selected")
+    public void select_expire_year_card(String year)  {
+        paymentInformationPage.selectYearByXpath(driver, year);
+
+    }
+    @And("the next button from payment information page is clicked")
+    public void click_next_button_payment_information(){
+        paymentInformationPage.clickNextButton_PaymentInformatin();
+    }
+
+    @And("the return to home page button is clicked")
+    public void click_return_home_button(){
+        paymentInformationPage.clickReturn_HomePageButton();
+    }
+
+
+
 
 //    @After
 //    public  void cleanUp() {

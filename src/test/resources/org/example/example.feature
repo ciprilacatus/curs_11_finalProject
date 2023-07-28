@@ -15,7 +15,7 @@ Feature: An example
     When The email value of "zxcvbnmasdfghjklqwertyuiop" is inputted
     And The submit button is clicked
 
-  Scenario:[04 Positive] acces Questions
+  Scenario:[04 Positive] access Questions
     Given I am on the main page
     When i click on acces Questions button
 
@@ -107,7 +107,7 @@ Feature: An example
     * the confirm password value of "" is inputted
     * i click on next button from personal information page
 
-    Scenario: [17 Positive: Contact_Information_Step] Valid email US
+    Scenario: [17 Positive: Contact_Information_Step] Valid Data
       Given I am Contact Information page
       When the contact information email value of "cineva@gmail.com" is inputted
       And the contact information phone value of "0742945546" is inputted
@@ -115,6 +115,26 @@ Feature: An example
       * the city value of "Brasov" is inputted
       * the post code value of "500217" is inputted
       * i click on next button from contact information page
+
+  Scenario: [18 Positive: Course_Option_Page] Adding Valid Data
+    Given I am on Course Option page
+    When i click on preferred course
+    And i click on next button from course option page
+
+  Scenario: [19 Positive: Course_Option_Page] Click on Preview button
+    Given I am on Course Option page
+    When i click on preferred course
+    And i click on preview button from course option page
+
+  Scenario: [20 Positive: Payment_Information_Page] Adding Valid Data
+    Given I am on Payment Information page
+    When the card holder name value of "Ciprian Lacatus" is inputted
+    And the card number value of "238945678914" is inputted
+    * the CVC value of "123" is inputted
+    * the expire month value "May" card is selected
+    * the expire year value "2022" card is selected
+    * the next button from payment information page is clicked
+    * the return to home page button is clicked
 
 
 
