@@ -24,6 +24,7 @@ public class StepDefinitions {
     ContactInformationPage contactInformationPage;
     CourseOptionPage courseOptionPage;
     PaymentInformationPage paymentInformationPage;
+    RegistrationConfirmationPage registrationConfirmationPage;
 
 
     public StepDefinitions() {
@@ -37,12 +38,22 @@ public class StepDefinitions {
         contactInformationPage = new ContactInformationPage(driver);
         courseOptionPage = new CourseOptionPage(driver);
         paymentInformationPage = new PaymentInformationPage(driver);
+        registrationConfirmationPage = new RegistrationConfirmationPage(driver);
 
     }
 
 
     ///////////////////////////////@Given////////////////////////////////
 
+
+    @Given("I am on Registration Confirmation Page")
+    public void i_am_on_registration_information_page() {
+        driver.get("file:///C:/Users/cipri/Documents/azimutVison/Testing-Env-master/Testing-Env-master/routes/enrollment.html");
+        personalInformationPage.fillInPersonalInformationWithValidData();
+        contactInformationPage.fillInContactInformationWithValidData();
+        courseOptionPage.fillCourseOptionValidData();
+        paymentInformationPage.fillPaymentInformationPage(driver);
+    }
 
     @Given("I am on Payment Information page")
     public void i_am_on_payment_information_page() {
@@ -99,6 +110,11 @@ public class StepDefinitions {
 
     ///////////////////////////////////////////////////////@When/////////////////////
 
+
+    @When("the return to home page button is clicked")
+    public void click_return_to_home_page_button(){
+        registrationConfirmationPage.clickReturn_HomePageButton();
+    }
     @When("the card holder name value of {string} is inputted")
     public void input_card_holder_name(String string) {
         paymentInformationPage.input_CardHolderName(string);
@@ -252,10 +268,6 @@ public class StepDefinitions {
         paymentInformationPage.clickNextButton_PaymentInformatin();
     }
 
-    @And("the return to home page button is clicked")
-    public void click_return_home_button(){
-        paymentInformationPage.clickReturn_HomePageButton();
-    }
 
 
 

@@ -98,7 +98,7 @@ Feature: An example
     * the confirm password value of "lljh" is inputted
     * i click on next button from personal information page
 
-  Scenario: [16 Negtive: Personal_Information_Step] Empty fields
+  Scenario: [16 Negative: Personal_Information_Step] Empty fields
     Given I am on Personal Information page
     When the first name value of "" is inputted
     And the last name value of "" is inputted
@@ -134,9 +134,10 @@ Feature: An example
     * the expire month value "May" card is selected
     * the expire year value "2022" card is selected
     * the next button from payment information page is clicked
-    * the return to home page button is clicked
 
-
+  Scenario: [20 Positive: Registration Succeed Page] Adding Valid Data
+    Given I am on Registration Confirmation Page
+    When the return to home page button is clicked
 
 
 

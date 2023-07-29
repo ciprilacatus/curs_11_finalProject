@@ -31,12 +31,7 @@ public class PaymentInformationPage{
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/button[2]")
     private WebElement clickNextButtonPaymentInformation;
-    @FindBy(xpath = "/html/body/div/div/section/div/form/div[5]/a")
-    private WebElement returnToHomePageButton;
 
-    public void clickReturn_HomePageButton(){
-        returnToHomePageButton.click();
-    }
 
     public void clickNextButton_PaymentInformatin(){
         clickNextButtonPaymentInformation.click();
@@ -64,6 +59,16 @@ public class PaymentInformationPage{
         WebElement dropdown = driver.findElement(By.xpath("//*[@id=\"year\"]"));
         Select select = new Select(dropdown);
         select.selectByVisibleText(year);
+    }
+
+    public void fillPaymentInformationPage(WebDriver driver) {
+        input_CardNumber("2356984578124");
+        input_CardHolderName("Ciprian Lacatus");
+        input_CVC("356");
+        selectMonthByXpath(driver, "June");
+        selectYearByXpath(driver,"2023");
+        clickNextButton_PaymentInformatin();
+
     }
 
     public PaymentInformationPage(WebDriver driver) {
