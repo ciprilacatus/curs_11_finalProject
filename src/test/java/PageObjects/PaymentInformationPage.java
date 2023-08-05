@@ -1,20 +1,11 @@
 package PageObjects;
 
-import org.example.StepDefinitions;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
@@ -33,7 +24,7 @@ public class PaymentInformationPage{
     private WebElement clickNextButtonPaymentInformation;
 
 
-    public void clickNextButton_PaymentInformatin(){
+    public void clickNextButton_PaymentInformation(){
         clickNextButtonPaymentInformation.click();
     }
 
@@ -67,7 +58,7 @@ public class PaymentInformationPage{
         input_CVC("356");
         selectMonthByXpath(driver, "June");
         selectYearByXpath(driver,"2023");
-        clickNextButton_PaymentInformatin();
+        clickNextButton_PaymentInformation();
 
     }
 

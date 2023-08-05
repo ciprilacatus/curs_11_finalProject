@@ -4,12 +4,9 @@ import PageObjects.*;
 import io.cucumber.java.After;
 import io.cucumber.java.en.*;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -110,7 +107,11 @@ public class StepDefinitions {
 
     ///////////////////////////////////////////////////////@When/////////////////////
 
-
+    @When("the Read More button from Learn Selenium is clicked")
+    public void click_read_more_learn_selenium_button() {
+        Utils.scrollToElement(driver, mainPage.scrollToReadMoreLearnSelenium());
+        mainPage.learnSelenium_ReadMoreButton();
+    }
     @When("the return to home page button is clicked")
     public void click_return_to_home_page_button(){
         registrationConfirmationPage.clickReturn_HomePageButton();
@@ -122,7 +123,7 @@ public class StepDefinitions {
 
     @When("i click on preferred course")
     public void click_on_preferred_course() {
-        courseOptionPage.clickOn_PreferredCours();
+        courseOptionPage.clickOn_PreferredCourse();
     }
 
     @When("the contact information email value of {string} is inputted")
@@ -163,12 +164,11 @@ public class StepDefinitions {
 
     @When("i click on Question expand button")
     public void question_expand_button() {
-        Utils.scrollToElement(driver, mainPage.getScrolToQuestionHeader());
+        Utils.scrollToElement(driver, mainPage.getScrollToQuestionHeader());
         mainPage.clickOnQuestionExpandButton();
     }
 
-
-    @When("i click on acces Questions button")
+    @When("i click on access Questions button")
     public void click_on_question_button() {
         mainPage.clickOnQuestionButton();
     }
@@ -185,7 +185,7 @@ public class StepDefinitions {
 
     @When("i click on read more button from In Person")
     public void click_Read_More_In_Person() {
-        Utils.scrollToElement(driver, mainPage.getScrolToReadMoreInPerson());
+        Utils.scrollToElement(driver, mainPage.getScrollToReadMoreInPerson());
         mainPage.clickReadMoreInPerson();
     }
 
@@ -196,7 +196,7 @@ public class StepDefinitions {
 
     @When("i click on back to top button")
     public void click_on_back_to_top_button() {
-        Utils.scrollToElement(driver, mainPage.getScrolToBottom());
+        Utils.scrollToElement(driver, mainPage.getScrollToBottom());
         mainPage.clickBackToTopButton();
 
     }
@@ -204,6 +204,12 @@ public class StepDefinitions {
     @When("i click on enrollment button")
     public void enrollment_button() {
         mainPage.clickOnEnrollmentButton();
+    }
+
+    @When("i click on Twitter icon of John Doe")
+    public void click_John_Doe_Twitter(){
+        Utils.scrollToElement(driver, mainPage.scrollTo_TwitterIcon());
+        mainPage.accesTwitterPageOf_JohnDoe();
     }
 
     ////////////////////////////////@And//////////////////////////////////////
@@ -265,16 +271,16 @@ public class StepDefinitions {
     }
     @And("the next button from payment information page is clicked")
     public void click_next_button_payment_information(){
-        paymentInformationPage.clickNextButton_PaymentInformatin();
+        paymentInformationPage.clickNextButton_PaymentInformation();
     }
 
 
 
 
 
-//    @After
-//    public  void cleanUp() {
-//        driver.quit();
-//    }
+    @After
+    public  void cleanUp() {
+        driver.quit();
+    }
 
 }
