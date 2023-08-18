@@ -20,6 +20,12 @@ public class ContactInformationPage {
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/button[2]")
     private WebElement contactInformationClickNextButton;
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[2]/h3")
+    private WebElement getContactInformationTitle;
+
+    public String getContactInformationTitleText(){
+        return getContactInformationTitle.getText();
+    }
 
     public void contactInformation_EmailField(String string) {
         contactInformationEmailField.sendKeys(string);

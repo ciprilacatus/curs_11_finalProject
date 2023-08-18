@@ -42,8 +42,6 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"learn-selenium\"]/div/div/div[1]/a")
     private WebElement learnSeleniumReadMoreButton;
 
-
-
     public WebElement scrollToReadMoreLearnSelenium() {
         return scrollToReadMoreLearnSelenium;
     }

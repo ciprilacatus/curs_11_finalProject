@@ -22,6 +22,11 @@ public class PaymentInformationPage{
 
     @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/div[4]/button[2]")
     private WebElement clickNextButtonPaymentInformation;
+    @FindBy(xpath = "/html/body/div/div/section/div/form/div[4]/h3")
+    private WebElement getPaymentInformationPageText;
+    public String getPaymentInformationPage_Text() {
+        return getPaymentInformationPageText.getText();
+    }
 
 
     public void clickNextButton_PaymentInformation(){

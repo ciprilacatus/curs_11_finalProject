@@ -13,6 +13,12 @@ private WebElement clickOnPreferredCourse;
 private WebElement clickOnNextButtonFromCourseOption;
 @FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/button[1]")
 private WebElement clickOnPreviewButtonFromCourseOption;
+@FindBy(xpath = "/html/body/div/div/section/div/form/div[3]/h3")
+private WebElement getOptionPageText;
+
+public String getOptionPage_Text() {
+    return getOptionPageText.getText();
+}
 public void clickOn_PreviewButtonFromCourseOption() {
     clickOnPreviewButtonFromCourseOption.click();
 }
