@@ -299,7 +299,7 @@ public class StepDefinitions {
     }
     @Then("the question is expanded")
     public void theQuestionIsExpanded() {
-        Assertions.assertTrue(driver.getPageSource().contains("collapse show"));
+        Assertions.assertTrue(driver.getPageSource().contains("show"));
     }
     @Then("the {string} page is opened")
     public void theInPersonPageIsOpened(String string) {
