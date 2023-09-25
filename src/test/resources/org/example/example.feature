@@ -43,7 +43,7 @@ Feature: An example
     Given I am on Virtual Page
     When i click on return to main page button
     Then i am on the "Software Testing Course" page
-
+#
   Scenario:TC08 [Positive] Click on back to top button from Main page
     Given I am on the main page
     When i click on back to top button
@@ -114,16 +114,16 @@ Feature: An example
     * the confirm password value of "lljh" is inputted
     * i click on next button from personal information page
     Then Contact Information page open
-
+#
   Scenario: TC16 [Negative: Personal_Information_Step] Empty fields
     Given I am on Personal Information page
-    When the first name value of "" is inputted
-    And the last name value of "" is inputted
-    * the username value of "" is inputted
-    * the password value of "" is inputted
-    * the confirm password value of "" is inputted
+    When the first name value of " " is inputted
+    And the last name value of " " is inputted
+    * the username value of " " is inputted
+    * the password value of " " is inputted
+    * the confirm password value of " " is inputted
     * i click on next button from personal information page
-    Then i am not allowed to the next step
+    Then I should remain on Personal Information page
 
   Scenario: TC17 [Positive: Contact_Information_Step] Valid Data
     Given I am Contact Information page
@@ -141,7 +141,7 @@ Feature: An example
     And i click on next button from course option page
     Then Payment Information page open
 
-
+#
   Scenario: TC19 [Positive: Payment_Information_Page] Adding Valid Data
     Given I am on Payment Information page
     When the card holder name value of "Ciprian Lacatus" is inputted

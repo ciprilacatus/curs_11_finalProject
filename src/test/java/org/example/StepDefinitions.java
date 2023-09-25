@@ -3,16 +3,18 @@ package org.example;
 import PageObjects.*;
 import dev.failsafe.internal.util.Assert;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.*;
 
+
+
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ByIdOrName;
+
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -306,10 +308,6 @@ public class StepDefinitions {
         Assertions.assertEquals(string, driver.getTitle());
     }
 
-//    @Then("i am on the {string} page")
-//    public void iAmOnTheMainPage(String string) {
-//        Assertions.assertEquals("Software Testing Course", driver.getTitle());
-//    }
     @Then("i am on the top of the Main page")
     public void iAmOnTheTopOfTheMainPage() {
         Assertions.assertEquals("Certified Software Tester",driver.findElement(By.xpath("/html/body/section[1]/div/div/div/h1/span")).getText());
@@ -332,11 +330,11 @@ public class StepDefinitions {
 
     @Then("I am on Twitter web page")
     public void iAmOnTwitterWebPage() {
-        Assertions.assertEquals("Twitter. It’s what’s happening / X", driver.getTitle());
+        Assertions.assertEquals("X. It’s what’s happening / X", driver.getTitle());
     }
 
-    @Then("i am not allowed to the next step")
-    public void iAmNotAllowedToTheNextStep() {
+    @Then("I should remain on Personal Information page")
+    public void iShouldRemainOnPersonalInformationPage() {
         Assertions.assertTrue(driver.findElement(By.xpath("/html/body/div/div/section/div/form/div[1]/h3")).isDisplayed());
     }
 
@@ -351,7 +349,11 @@ public class StepDefinitions {
     }
 
     @After
-    public  void cleanUp() {
+    public void cleanUp(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/jpg", "");
+        }
         driver.quit();
     }
 
